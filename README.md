@@ -3,6 +3,8 @@
                 composer create-project laravel/laravel PROJECT-NAME
                 
     and move the new project folder by using cd command of terminal
+    
+    
 
 2)	Now install vue.js by running command 
 
