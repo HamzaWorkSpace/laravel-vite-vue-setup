@@ -4,7 +4,7 @@
 
 2)	Now install vue.js by running command 
 
-                npm I vue@next vue-loader@next
+                npm i vue@next vue-loader@next
 
 3)	Now install vite-vue plugin to run vue on vite by using command 
 
