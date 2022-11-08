@@ -42,7 +42,7 @@ plugins: [
 
 <template>
       <div>
-            <h1>Hello Sales board</h1>
+           Hello world!
       </div>
 </template>
 
