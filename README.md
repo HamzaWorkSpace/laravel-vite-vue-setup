@@ -40,23 +40,120 @@
 
             </body>
 
-7)	Now go to resources/js folder and create a new folder named layouts. And in that folder create a new file named aap.vue
+7)	In resources/js/app.js file add the following code
 
-8)	In app.vue add the following code:
+                import { createApp } from 'vue';
+                import { createPinia } from 'pinia';
+
+                import BootstrapVue3 from 'bootstrap-vue-3'
+                import 'bootstrap/dist/css/bootstrap.css'
+                import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+
+                import '@formkit/themes/genesis'
+                import App from './app.vue';
+                import { plugin, defaultConfig } from '@formkit/vue';
+                import routes from './router/index.js';
+                import VueLoading from 'vue-loading-overlay';
+                import 'vue-loading-overlay/dist/vue-loading.css';
+                import { VueCookieNext } from 'vue-cookie-next';
+                VueCookieNext.config({ expire: '7d' })
+
+                const pinia = createPinia();
+
+                const app=createApp(App)
+                app.use(BootstrapVue3);
+                app.use(plugin, defaultConfig);
+                app.use(routes);
+                app.use(pinia);
+                app.use(VueLoading);
+                app.use(VueCookieNext);
+                app.mount('#app');
+                
+                
+ 10) create the following directories in resources/js
+    a) js/assets (put images here)
+    b) js/components (components go here)
+    c) js/layouts (your fixed design throughout website is defined here example: fixed header)
+    d) js/pages/ "VIEWS OF THE WEBSITE"
+    e) js/router/index.js (your routes are defined in index.js)
+    f) js/store/(your pinia store files go here)
+   
+  11) now,  create a new file named aap.vue (resources/app.vue), In app.vue add the following code:
 
           <template>
-              <div>
-                  Hello world!
-                </div>
+             
+                 <router-view></router-view>
+              
           </template>
+          
+   12) create a new file named home.vue in resources/home.vue. and put the following code
+        <template>
+              <div>
+                    Hello World!
+                </div>
+         </template>
+   13) now go to resources/router/index.js file and put the following code to create a route to home page.
+          
+          
+          import {createRouter,createWebHistory} from 'vue-router';
 
-9)	In resources/js/app.js file add the following code
+            const routes = createRouter(
+                  {
+                        history:createWebHistory(),
+                        routes:[
+                              { 
+                                    path:'/',
+                                    name: 'Home',
+                                    component: () => import('../home.vue'),
+                                    //beforeEnter:['func']// used to run a function before a route changes
+                              },
+                        ] 
 
-                import ‘. /bootstrap';
+                  });
 
-                import {createApp} from 'vue';
-                import app from './layouts/app.vue';
+               export default routes;
+    14) I could have written the commands to install all the packages of npm that we are using. but its just easy to copy and paste the following  code in package.json
+        replace all code.
 
-                const myapp = createApp(app)
+            {
+                "private": true,
+                "scripts": {
+                    "dev": "vite",
+                    "build": "vite build",
+                    "watch": "vite build --watch"
+               },
+                "devDependencies": {
+                    "axios": "^1.1.2",
+                    "laravel-vite-plugin": "^0.6.0",
+                    "lodash": "^4.17.19",
+                    "postcss": "^8.1.14",
+                    "vite": "^3.0.0"
+                },
+                "dependencies": {
+                    "@formkit/themes": "^1.0.0-beta.10",
+                    "@formkit/vue": "^1.0.0-beta.10",
+                    "@popperjs/core": "^2.11.6",
+                    "@vitejs/plugin-vue": "^3.2.0",
+                    "vue": "^3.2.36",
+                    "vue-loader": "^17.0.0",
+                    "bootstrap": "^5.2.0",
+                    "bootstrap-vue": "^2.22.0",
+                    "bootstrap-vue-3": "^0.1.21",
+                    "moment": "^2.29.4",
+                    "pinia": "^2.0.21",
+                    "sweetalert2": "^11.4.32",
+                    "vue-cookie-next": "^1.3.0",
+                    "vue-loading-overlay": "5.0",
+                    "vue-router": "^4.1.3"
+                }
+            }
 
-                myapp. mount('#app');
+15) now run npm run dev and php artisan serve command to see the output on server
+
+    
+    
+   
+        
+   
+ 
+ 
