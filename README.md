@@ -148,7 +148,7 @@
                 }
             }
 
-15) now run npm run dev and php artisan serve command to see the output on server
+15) now run npm run dev and php artisan serve command to see the output on the browser
 
     
     
