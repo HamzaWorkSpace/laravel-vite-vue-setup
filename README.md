@@ -150,6 +150,12 @@
 
 15) now run npm run dev and php artisan serve command to see the output on the browser
 
+16) add the following code in routes/web.php file to fix 404 error on pages other than home page.
+
+            Route::get('/{any}',function(){
+                return view('welcome');
+            })->where("any",".*");
+
     
     
    
