@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// use the below routing to fix 404 error on pages other than home page.
+Route::get('/{any}',function(){
+    return view('welcome');
+})->where("any",".*");
