@@ -155,7 +155,12 @@
             Route::get('/{any}',function(){
                 return view('welcome');
             })->where("any",".*");
+17) change .env.example file to .env
 
+18) inside.env file change APP_URL=http://localhost to APP_URL=http://localhost:8000
+
+19) open command prompt and type npm run dev and open another command prompt and type php artisan serve command. 
+    now open the shown URL in browder to view the visuals of code
     
     
    
